@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Trigger push
+          Push
         </a>
       </header>
     </div>
