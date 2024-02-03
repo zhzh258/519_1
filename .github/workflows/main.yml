@@ -5,7 +5,8 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: 519fall2023-assignment1
-  AZURE_WEBAPP_PACKAGE_PATH: './Node/WEB/frontend' # Path to your web app project
+  AZURE_FRONTEND_PACKAGE_PATH: 'Node/WEB/frontend'
+  AZURE_WEBAPP_PACKAGE_PATH: 'Node/WEB/' # Path to your web app project
   NODE_VERSION: '18.x'
 
 jobs:
@@ -27,7 +28,7 @@ jobs:
           npm install
 
       - name: Install and build frontend
-        working-directory: './${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        working-directory: './${{ env.AZURE_FRONTEND_PACKAGE_PATH }}'
         run: |
           npm install
           npm run build
