@@ -24,26 +24,14 @@ jobs:
         run: |
           npm install
           npm run build
-          # Optionally run tests
           # npm run test --if-present
-
-      - name: Prepare for deployment
-        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-        run: |
-          # Remove non-essential directories
           rm -rf node_modules src public
-          # Now, only the 'build' directory and any other necessary files remain
-
-      - name: Zip build artifacts for deployment
-        working-directory: ${{ github.workspace }} # Stays at the project root
-        run: |
-          zip -r release.zip ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: release.zip
+          path: .
 
   deploy:
     needs: build
@@ -54,12 +42,9 @@ jobs:
         with:
           name: node-app
 
-      - name: Unzip artifact for deployment
-        run: unzip release.zip -d deploy
-
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
-          package: deploy
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
