@@ -1,6 +1,5 @@
 name: Deploy Node.js to Azure Web App
 
-
 on:
   [push]
 
@@ -19,7 +18,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -38,9 +36,13 @@ jobs:
         working-directory: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
         run:
           npm run build
+          echo "building..."
+          ls -lah
           rm -r public
           rm -r node_modules
           rm -r src
+          echo "Directories deleted."
+          ls -lah 
 
       - name: Zip artifact for deployment (zip here, and unzip at deploy)
         run: zip release.zip ./* -r
