@@ -3,7 +3,7 @@ name: Deploy Node.js to Azure Web App
 on:
   push:
     branches: ["main"]
-    paths: "/Node/WEB/**"
+    paths: "Node/WEB/**"
     
 env:
   AZURE_WEBAPP_NAME: 519fall2023-assignment1
