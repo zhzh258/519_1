@@ -15,11 +15,8 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Push2
+          This is the main page of React
         </a>
-        <p>
-            The secret content of Secret1 is: {process.env.MyAppSetting}
-        </p>
       </header>
     </div>
   );
