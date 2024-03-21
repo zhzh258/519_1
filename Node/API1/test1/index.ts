@@ -12,7 +12,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     context.log(`Value of Secret2 is: ${Secret2}`);
 
     // store a string in Queue Storage
-    context.bindings.myQueueItem = "abcabcabctestinggggg"
+    context.bindings.myQueueItem = "Function is triggered and I insert this message to the Queue!"
 
 
     context.res = {
