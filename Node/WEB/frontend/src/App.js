@@ -17,6 +17,9 @@ function App() {
         >
           Push2
         </a>
+        <p>
+            The secret content of Secret1 is: {process.env.MyAppSetting}
+        </p>
       </header>
     </div>
   );
